@@ -20,7 +20,7 @@
 			<input type="submit" value="login">
 		</div>
 		<div>
-			<input type="reset" value="" clear>
+			<input type="reset" value="clear"/>
 		</div>
 	</form>
 

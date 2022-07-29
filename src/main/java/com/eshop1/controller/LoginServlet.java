@@ -1,6 +1,8 @@
 package com.eshop1.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.eshop1.product.Product;
 
 /**
  * Servlet implementation class LoginServlet
@@ -27,7 +32,9 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("admin-home.jsp");
 			rd.forward(request, response);
 		} else {
-
+			List<Product> products  = new ArrayList<Product>();
+			HttpSession session = request.getSession();
+			session.setAttribute("cart", products);
 			RequestDispatcher rd = request.getRequestDispatcher("user-home.jsp");
 			rd.forward(request, response);
 		}
