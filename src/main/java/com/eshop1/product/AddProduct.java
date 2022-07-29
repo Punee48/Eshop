@@ -1,6 +1,10 @@
 package com.eshop1.product;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +33,18 @@ public class AddProduct extends HttpServlet {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("productid");
 		String productname = request.getParameter("productname");
-		String price = request.getParameter("productprice");
-		String weight = request.getParameter("productweight");
+		String price = request.getParameter("productPrice");
+		String weight = request.getParameter("productWeight");
 		int productid = Integer.parseInt(id);
 		int productprice  = Integer.parseInt(price);
 		int productweight = Integer.parseInt(weight);
 		Product product = new Product(productid,productname,productweight,productprice);
+		ServletContext ctx = request.getServletContext();
+		List<Product> products =(List<Product>) ctx.getAttribute("products");
+		products.add(product);
+		ctx.setAttribute("products", products);
+		RequestDispatcher rd = request.getRequestDispatcher("admin-home.jsp");
+		rd.forward(request, response);
 	}
 
 }

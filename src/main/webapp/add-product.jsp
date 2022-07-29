@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="add-product.do">
+	<form action="add-product.do" method="post">
 		<div>
 			<label>Enter Product Id:<input type="text" name="productid" />
 			</label>
@@ -25,6 +25,9 @@
 			<label> Enter Product Weight <input type="text"
 				name="productWeight" />
 			</label>
+		</div>
+		<div>
+		<input type="submit" value="Submit"/>
 		</div>
 	</form>
 </body>
